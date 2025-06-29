@@ -29,7 +29,7 @@
             Hello 👋 I'm
             <a
               href="https://github.com/wegoagain00"
-              style="color: white"
+              style="color: inherit"
               target="_blank"
               >Tawfiq</a
             >.
@@ -44,10 +44,13 @@
             (gym/football).
           </p>
           <p class="current">
-            Keep a lookout for my upcoming blog to discuss every project I'll be
-            making 👀. I'm currently upskilling and mastering Docker, Kubernetes
-            and Terraform and experimenting with the latest DevOps tools and
-            practices.
+            Keep a lookout for my upcoming
+            <a href="#blog" style="color: inherit; text-decoration: underline"
+              >blog</a
+            >
+            to discuss every project I'll be making 👀. I'm currently upskilling
+            and mastering Docker, Kubernetes and Terraform also experimenting
+            with the latest DevOps tools and practices.
           </p>
           <p class="current">
             Feel free to connect with me on social media or drop me an email.
@@ -90,22 +93,43 @@
               <h3>Three Tier Architecture with AWS</h3>
               <p>
                 A comprehensive project demonstrating a three-tier architecture
-                using AWS services like EC2, RDS, and S3. It includes VPC setup,
-                security groups, and load balancing for high availability.
+                using AWS services like EC2 instances, RDS, VPC. It includes a
+                VPC setup, security groups, public/private subnets and
+                availability zones for high availability.
               </p>
               <div class="project-tags">
                 <span class="tag">AWS</span>
                 <span class="tag">Terraform</span>
               </div>
               <a
-                href="https://github.com/wegoagain00"
+                href="https://github.com/wegoagain00/three-tier-architecture"
                 target="_blank"
                 class="project-link"
                 >View on GitHub</a
               >
             </div>
             <div class="project-card">
-              <h3>CI/CD Pipeline for my Site</h3>
+              <h3>MERN App with Docker Compose</h3>
+              <p>
+                A full-stack MERN (MongoDB, Express, React, Node.js) application
+                containerized using Docker Compose. This project demonstrates
+                how to orchestrate multi-container applications, enabling
+                seamless local development and deployment.
+              </p>
+              <div class="project-tags">
+                <span class="tag">MERN</span>
+                <span class="tag">Docker</span>
+                <span class="tag">Docker Compose</span>
+              </div>
+              <a
+                href="https://github.com/wegoagain00/mern-docker-app"
+                target="_blank"
+                class="project-link"
+                >View on GitHub</a
+              >
+            </div>
+            <div class="project-card">
+              <h3>CI/CD Pipeline for current personal Site</h3>
               <p>
                 A CI/CD pipeline project that automates the deployment of my
                 personal website using GitHub Actions. It includes build, test,
@@ -142,7 +166,13 @@
       </nav>
 
       <footer>
-        <a href="https://github.com/wegoagain00" target="_blank">Source Code</a>
+        <span>🚀 Built with passion by Tawfiq &mdash; </span>
+
+        <span> | &copy; <span id="year"></span></span>
+        <script>
+          document.getElementById("year").textContent =
+            new Date().getFullYear();
+        </script>
       </footer>
     </div>
 

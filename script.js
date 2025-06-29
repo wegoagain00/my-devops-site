@@ -32,24 +32,40 @@ document.addEventListener("DOMContentLoaded", function () {
 // Blog posts data - Add posts here
 const blogPosts = [
   {
-    id: "CI/CD Pipeline Automation with GitHub Actions ",
-    title: "CI/CD Pipeline Automation with GitHub Actions",
+    id: "devops-portfolio-site",
+    title: "Building My DevOps Portfolio Site",
     date: "June 19, 2025",
-    tags: ["GitHub Actions", "CI/CD", "YAML"],
-    excerpt: "tbc",
-    content: `
-            <p>blog coming soon...<p>
-        `,
+    tags: ["DevOps", "Portfolio", "JavaScript"],
+    excerpt:
+      "A walkthrough of how I built and deployed my DevOps portfolio website.",
+    content: ``,
   },
   {
-    id: "Three Tier Architecture with AWS",
-    title: "Three Tier Architecture with AWS",
+    id: "github-actions-automation",
+    title: "Automating Workflows with GitHub Actions",
     date: "June 20, 2025",
-    tags: ["AWS", "Terraform"],
-    excerpt: "tbc",
-    content: `
-            <p>blog coming soon...<p>
-        `,
+    tags: ["GitHub Actions", "CI/CD", "Automation"],
+    excerpt:
+      "How I used GitHub Actions to automate testing and deployment for my projects.",
+    content: ``,
+  },
+  {
+    id: "aws-three-tier-architecture",
+    title: "Deploying a Three-Tier Architecture on AWS",
+    date: "June 21, 2025",
+    tags: ["AWS", "Cloud", "Infrastructure"],
+    excerpt:
+      "My experience designing and deploying a scalable three-tier architecture using AWS services.",
+    content: ``,
+  },
+  {
+    id: "terraform-infrastructure-as-code",
+    title: "Infrastructure as Code with Terraform",
+    date: "June 22, 2025",
+    tags: ["Terraform", "IaC", "DevOps"],
+    excerpt:
+      "Lessons learned from managing cloud infrastructure using Terraform.",
+    content: ``,
   },
 ];
 

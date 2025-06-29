@@ -34,7 +34,7 @@ const blogPosts = [
   {
     id: "devops-portfolio-site",
     title: "Building My DevOps Portfolio Site",
-    date: "June 19, 2025",
+    date: "May 19, 2025",
     tags: ["DevOps", "Portfolio", "JavaScript"],
     excerpt:
       "A walkthrough of how I built and deployed my DevOps portfolio website.",
@@ -43,7 +43,7 @@ const blogPosts = [
   {
     id: "github-actions-automation",
     title: "Automating Workflows with GitHub Actions",
-    date: "June 20, 2025",
+    date: "May 31, 2025",
     tags: ["GitHub Actions", "CI/CD", "Automation"],
     excerpt:
       "How I used GitHub Actions to automate testing and deployment for my projects.",
@@ -52,7 +52,7 @@ const blogPosts = [
   {
     id: "aws-three-tier-architecture",
     title: "Deploying a Three-Tier Architecture on AWS",
-    date: "June 21, 2025",
+    date: "June 14, 2025",
     tags: ["AWS", "Cloud", "Infrastructure"],
     excerpt:
       "My experience designing and deploying a scalable three-tier architecture using AWS services.",
@@ -61,10 +61,19 @@ const blogPosts = [
   {
     id: "terraform-infrastructure-as-code",
     title: "Infrastructure as Code with Terraform",
-    date: "June 22, 2025",
+    date: "June 19, 2025",
     tags: ["Terraform", "IaC", "DevOps"],
     excerpt:
       "Lessons learned from managing cloud infrastructure using Terraform.",
+    content: ``,
+  },
+  {
+    id: "mern-docker-compose",
+    title: "Deploying a MERN Stack App with Docker Compose",
+    date: "June 24, 2025",
+    tags: ["MERN", "Docker", "Docker Compose", "Full-Stack"],
+    excerpt:
+      "How to containerize and orchestrate a full MERN stack application using Docker Compose.",
     content: ``,
   },
 ];

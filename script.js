@@ -1,4 +1,4 @@
-// Navigation functionality
+// Navigation functionality with hash-based routing
 document.addEventListener("DOMContentLoaded", function () {
   const navButtons = document.querySelectorAll(".nav-btn");
   const sections = document.querySelectorAll(".section");
@@ -7,78 +7,136 @@ document.addEventListener("DOMContentLoaded", function () {
   navButtons.forEach((button) => {
     button.addEventListener("click", function () {
       const targetSection = this.getAttribute("data-section");
-
-      // Remove active class from all buttons and sections
-      navButtons.forEach((btn) => btn.classList.remove("active"));
-      sections.forEach((section) => section.classList.remove("active"));
-
-      // Add active class to clicked button and corresponding section
-      this.classList.add("active");
-      document.getElementById(targetSection).classList.add("active");
-
-      // Load blog posts if blog section is clicked
-      if (targetSection === "blog") {
-        loadBlogPosts();
-      }
+      navigateToSection(targetSection);
     });
   });
 
-  // Load blog posts on initial page load if blog section is active
-  if (document.getElementById("blog").classList.contains("active")) {
-    loadBlogPosts();
+  // Handle hash changes (back/forward buttons)
+  window.addEventListener("hashchange", handleHashChange);
+
+  // Handle initial page load
+  handleHashChange();
+
+  function navigateToSection(sectionName) {
+    // Update URL hash
+    window.location.hash = sectionName;
+
+    // Remove active class from all buttons and sections
+    navButtons.forEach((btn) => btn.classList.remove("active"));
+    sections.forEach((section) => section.classList.remove("active"));
+
+    // Add active class to corresponding button and section
+    const targetButton = document.querySelector(
+      `[data-section="${sectionName}"]`
+    );
+    const targetSection = document.getElementById(sectionName);
+
+    if (targetButton) targetButton.classList.add("active");
+    if (targetSection) targetSection.classList.add("active");
+
+    // Load blog posts if blog section is active
+    if (sectionName === "blog") {
+      loadBlogPosts();
+    }
+  }
+
+  function handleHashChange() {
+    const hash = window.location.hash.substring(1); // Remove #
+
+    // Check if it's a blog post
+    if (hash.startsWith("blog-")) {
+      const postId = hash.substring(5); // Remove "blog-"
+      navigateToSection("blog");
+      setTimeout(() => showFullPost(postId), 100);
+      return;
+    }
+
+    // Default section navigation
+    const section = hash || "about";
+    navigateToSection(section);
   }
 });
 
 // Blog posts data - Add posts here
+
 const blogPosts = [
   {
     id: "devops-portfolio-site",
+
     title: "Building My DevOps Portfolio Site",
+
     date: "May 19, 2025",
+
     tags: ["DevOps", "Portfolio", "JavaScript"],
+
     excerpt:
       "A walkthrough of how I built and deployed my DevOps portfolio website.",
+
     content: ``,
   },
+
   {
     id: "github-actions-automation",
+
     title: "Automating Workflows with GitHub Actions",
+
     date: "May 31, 2025",
+
     tags: ["GitHub Actions", "CI/CD", "Automation"],
+
     excerpt:
       "How I used GitHub Actions to automate testing and deployment for my projects.",
+
     content: ``,
   },
+
   {
     id: "aws-three-tier-architecture",
+
     title: "Deploying a Three-Tier Architecture on AWS",
+
     date: "June 14, 2025",
+
     tags: ["AWS", "Cloud", "Infrastructure"],
+
     excerpt:
       "My experience designing and deploying a scalable three-tier architecture using AWS services.",
+
     content: ``,
   },
+
   {
     id: "terraform-infrastructure-as-code",
+
     title: "Infrastructure as Code with Terraform",
+
     date: "June 19, 2025",
+
     tags: ["Terraform", "IaC", "DevOps"],
+
     excerpt:
       "Lessons learned from managing cloud infrastructure using Terraform.",
+
     content: ``,
   },
+
   {
     id: "mern-docker-compose",
+
     title: "Deploying a MERN Stack App with Docker Compose",
+
     date: "June 24, 2025",
+
     tags: ["MERN", "Docker", "Docker Compose", "Full-Stack"],
+
     excerpt:
       "How to containerize and orchestrate a full MERN stack application using Docker Compose.",
+
     content: ``,
   },
 ];
 
-// Blog functionality
+// Blog functionality with hash-based links
 function loadBlogPosts() {
   const blogContainer = document.getElementById("blog-posts");
 
@@ -102,9 +160,7 @@ function loadBlogPosts() {
     .map(
       (post) => `
         <div class="blog-post">
-            <h3><a href="#" onclick="showFullPost('${
-              post.id
-            }'); return false;">${post.title}</a></h3>
+            <h3><a href="#blog-${post.id}">${post.title}</a></h3>
             <div class="blog-meta">${post.date} • ${post.tags.join(", ")}</div>
             <div class="blog-excerpt">${post.excerpt}</div>
         </div>
@@ -121,12 +177,18 @@ function showFullPost(postId) {
   const blogContainer = document.getElementById("blog-posts");
   blogContainer.innerHTML = `
         <div class="blog-post-full">
-            <button onclick="loadBlogPosts()" class="back-btn">← Back to all posts</button>
+            <button onclick="goBackToBlogList()" class="back-btn">← Back to all posts</button>
             <h2>${post.title}</h2>
             <div class="blog-meta">${post.date} • ${post.tags.join(", ")}</div>
             <div class="blog-content">${post.content}</div>
         </div>
     `;
+}
+
+// Function to go back to blog list
+function goBackToBlogList() {
+  window.location.hash = "blog";
+  loadBlogPosts();
 }
 
 // Utility function to parse markdown frontmatter (for future use)

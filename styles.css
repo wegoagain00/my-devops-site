@@ -5,21 +5,75 @@
   box-sizing: border-box;
 }
 
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #24273a; /* base */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #494d64; /* surface1 */
+  border-radius: 10px;
+  border: 2px solid #24273a; /* base */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #5b6078; /* surface2 */
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #494d64 #24273a;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   line-height: 1.6;
-  color: #f7f3f0;
-  background-color: #3c3836;
+  color: #cad3f5; /* text */
+  background-color: #24273a; /* base */
   font-size: 16px;
 }
 
 .container {
   max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
-  min-height: 100vh;
+  margin: 2rem auto;
+  padding: 2rem;
+  min-height: calc(100vh - 4rem);
   display: flex;
   flex-direction: column;
+  background-color: #1e2030; /* mantle */
+  border-radius: 16px;
+  border: 2px solid #363a4f; /* surface0 */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    #f5bde6,
+    #c6a0f6,
+    #8aadf4,
+    #7dc4e4,
+    #8bd5ca,
+    #a6da95,
+    #eed49f,
+    #f5a97f,
+    #ee99a0
+  );
+  border-radius: 16px 16px 0 0;
 }
 
 /* Header */
@@ -30,7 +84,7 @@ header {
 header h1 {
   font-size: 2rem;
   font-weight: 600;
-  color: #f7f3f0;
+  color: #cad3f5; /* text */
   margin-bottom: 0.5rem;
 }
 
@@ -63,32 +117,32 @@ main {
 .greeting {
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
-  color: #d4c4b0;
+  color: #b7bdf8; /* lavender */
 }
 
 .intro {
   font-size: 1.1rem;
   line-height: 1.7;
   margin-bottom: 1rem;
-  color: #f7f3f0;
+  color: #cad3f5; /* text */
 }
 
 .current {
   font-size: 1.1rem;
   line-height: 1.7;
   margin-bottom: 2rem;
-  color: #f7f3f0;
+  color: #cad3f5; /* text */
 }
 
 .intro a,
 .current a {
-  color: #f7f3f0;
+  color: #8aadf4; /* blue */
   text-decoration: underline;
 }
 
 .intro a:hover,
 .current a:hover {
-  color: #d4c4b0;
+  color: #7dc4e4; /* sapphire */
   text-decoration: underline;
 }
 
@@ -106,16 +160,16 @@ main {
 .platform {
   min-width: 100px;
   font-weight: 500;
-  color: #f7f3f0;
+  color: #f4dbd6; /* rosewater */
 }
 
 .link-item a {
-  color: #f7f3f0;
+  color: #8aadf4; /* blue */
   text-decoration: underline;
 }
 
 .link-item a:hover {
-  color: #d4c4b0;
+  color: #7dc4e4; /* sapphire */
   text-decoration: underline;
 }
 
@@ -128,28 +182,28 @@ main {
 }
 
 .project-card {
-  border: 1px solid #665c54;
-  border-radius: 8px;
+  border: 1px solid #494d64; /* surface1 */
+  border-radius: 12px;
   padding: 1.5rem;
-  background: #504945;
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  background: #363a4f; /* surface0 */
+  transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
 }
 
 .project-card:hover {
-  box-shadow: 0 4px 12px rgba(247, 243, 240, 0.1);
+  box-shadow: 0 4px 20px rgba(138, 173, 244, 0.15);
   transform: translateY(-2px);
-  border-color: #7c6f64;
+  border-color: #5b6078; /* surface2 */
 }
 
 .project-card h3 {
   font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
-  color: #f7f3f0;
+  color: #cad3f5; /* text */
 }
 
 .project-card p {
-  color: #d4c4b0;
+  color: #a5adcb; /* subtext0 */
   margin-bottom: 1rem;
   line-height: 1.5;
 }
@@ -162,29 +216,29 @@ main {
 }
 
 .tag {
-  background: #665c54;
-  color: #f7f3f0;
+  background: #494d64; /* surface1 */
+  color: #cad3f5; /* text */
   padding: 0.2rem 0.5rem;
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: 0.85rem;
   font-weight: 500;
-  border: 1px solid #7c6f64;
+  border: 1px solid #5b6078; /* surface2 */
 }
 
 .project-link {
-  color: #f7f3f0;
+  color: #8aadf4; /* blue */
   text-decoration: underline;
   font-weight: 500;
 }
 
 .project-link:hover {
-  color: #d4c4b0;
+  color: #7dc4e4; /* sapphire */
   text-decoration: underline;
 }
 
 /* Blog section */
 .blog-post {
-  border-bottom: 1px solid #665c54;
+  border-bottom: 1px solid #494d64; /* surface1 */
   padding-bottom: 1.5rem;
   margin-bottom: 1.5rem;
 }
@@ -198,27 +252,27 @@ main {
   font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
-  color: #f7f3f0;
+  color: #cad3f5; /* text */
 }
 
 .blog-post h3 a {
-  color: #f7f3f0;
+  color: #8aadf4; /* blue */
   text-decoration: underline;
   cursor: pointer;
 }
 
 .blog-post h3 a:hover {
-  color: #d4c4b0;
+  color: #7dc4e4; /* sapphire */
 }
 
 .blog-meta {
-  color: #d4c4b0;
+  color: #b7bdf8; /* lavender */
   font-size: 0.9rem;
   margin-bottom: 0.5rem;
 }
 
 .blog-excerpt {
-  color: #d4c4b0;
+  color: #a5adcb; /* subtext0 */
   line-height: 1.5;
 }
 
@@ -229,10 +283,10 @@ main {
 
 .back-btn {
   background: none;
-  border: 1px solid #665c54;
-  color: #d4c4b0;
+  border: 1px solid #494d64; /* surface1 */
+  color: #a5adcb; /* subtext0 */
   padding: 0.5rem 1rem;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
   margin-bottom: 1.5rem;
   font-size: 0.9rem;
@@ -240,9 +294,9 @@ main {
 }
 
 .back-btn:hover {
-  background: #504945;
-  color: #f7f3f0;
-  border-color: #7c6f64;
+  background: #363a4f; /* surface0 */
+  color: #cad3f5; /* text */
+  border-color: #5b6078; /* surface2 */
 }
 
 .blog-content {
@@ -251,7 +305,7 @@ main {
 }
 
 .blog-content h3 {
-  color: #f7f3f0;
+  color: #cad3f5; /* text */
   font-size: 1.3rem;
   margin: 2rem 0 1rem 0;
   font-weight: 600;
@@ -259,7 +313,7 @@ main {
 
 .blog-content p {
   margin-bottom: 1rem;
-  color: #d4c4b0;
+  color: #a5adcb; /* subtext0 */
 }
 
 .blog-content ul,
@@ -270,23 +324,23 @@ main {
 
 .blog-content li {
   margin-bottom: 0.5rem;
-  color: #d4c4b0;
+  color: #a5adcb; /* subtext0 */
 }
 
 .blog-content pre {
-  background: #504945;
-  border: 1px solid #665c54;
-  border-radius: 4px;
+  background: #363a4f; /* surface0 */
+  border: 1px solid #494d64; /* surface1 */
+  border-radius: 8px;
   padding: 1rem;
   overflow-x: auto;
   margin-bottom: 1rem;
 }
 
 .blog-content code {
-  background: #504945;
-  color: #f7f3f0;
+  background: #363a4f; /* surface0 */
+  color: #a6da95; /* green */
   padding: 0.2rem 0.4rem;
-  border-radius: 3px;
+  border-radius: 4px;
   font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
   font-size: 0.9rem;
 }
@@ -294,7 +348,7 @@ main {
 .blog-content pre code {
   background: none;
   padding: 0;
-  color: #d4c4b0;
+  color: #a5adcb; /* subtext0 */
 }
 
 /* Navigation */
@@ -307,25 +361,25 @@ main {
 
 .nav-btn {
   background: none;
-  border: 1px solid #665c54;
+  border: 1px solid #494d64; /* surface1 */
   padding: 0.5rem 1rem;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 0.9rem;
-  color: #d4c4b0;
+  color: #a5adcb; /* subtext0 */
   transition: all 0.2s ease;
 }
 
 .nav-btn:hover {
-  background: #504945;
-  color: #f7f3f0;
-  border-color: #7c6f64;
+  background: #363a4f; /* surface0 */
+  color: #cad3f5; /* text */
+  border-color: #5b6078; /* surface2 */
 }
 
 .nav-btn.active {
-  background: #f7f3f0;
-  color: #3c3836;
-  border-color: #f7f3f0;
+  background: #8aadf4; /* blue */
+  color: #24273a; /* base */
+  border-color: #8aadf4; /* blue */
 }
 
 /* Footer */
@@ -333,17 +387,17 @@ footer {
   text-align: center;
   margin-top: 2rem;
   padding-top: 2rem;
-  border-top: 1px solid #665c54;
+  border-top: 1px solid #494d64; /* surface1 */
 }
 
 footer a {
-  color: #d4c4b0;
+  color: #b7bdf8; /* lavender */
   text-decoration: underline;
   font-size: 0.9rem;
 }
 
 footer a:hover {
-  color: #f7f3f0;
+  color: #cad3f5; /* text */
   text-decoration: underline;
 }
 
@@ -351,13 +405,14 @@ footer a:hover {
 h2 {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #f7f3f0;
+  color: #cad3f5; /* text */
   margin-bottom: 1rem;
 }
 
 /* Responsive design */
 @media (max-width: 768px) {
   .container {
+    margin: 1rem;
     padding: 1rem;
   }
 
@@ -396,13 +451,13 @@ h2 {
 
 /* Blog actions and link styling */
 .blog-post h3 a {
-  color: #f7f3f0;
+  color: #8aadf4; /* blue */
   text-decoration: none;
   border-bottom: 1px solid transparent;
   transition: border-color 0.2s ease;
 }
 
 .blog-post h3 a:hover {
-  color: #d4c4b0;
-  border-bottom-color: #d4c4b0;
+  color: #7dc4e4; /* sapphire */
+  border-bottom-color: #7dc4e4; /* sapphire */
 }

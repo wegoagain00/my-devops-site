@@ -34,6 +34,12 @@ document.addEventListener("DOMContentLoaded", function () {
     if (targetButton) targetButton.classList.add("active");
     if (targetSection) targetSection.classList.add("active");
 
+    // Scroll to top of the page smoothly
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+
     // Load blog posts if blog section is active
     if (sectionName === "blog") {
       loadBlogPosts();
@@ -47,7 +53,14 @@ document.addEventListener("DOMContentLoaded", function () {
     if (hash.startsWith("blog-")) {
       const postId = hash.substring(5); // Remove "blog-"
       navigateToSection("blog");
-      setTimeout(() => showFullPost(postId), 100);
+      setTimeout(() => {
+        showFullPost(postId);
+        // Scroll to top after showing the post
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }, 100);
       return;
     }
 
@@ -214,7 +227,7 @@ function loadBlogPosts() {
   if (blogPosts.length === 0) {
     blogContainer.innerHTML = `
             <div class="blog-post">
-                <p style="color: #ccc; font-style: italic;">
+                <p style="color: #a5adcb; font-style: italic;">
                     No blog posts found. Add your posts to the blogPosts array in script.js!
                 </p>
             </div>
@@ -260,6 +273,11 @@ function showFullPost(postId) {
 function goBackToBlogList() {
   window.location.hash = "blog";
   loadBlogPosts();
+  // Scroll to top when going back to blog list
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
 }
 
 // Utility function to parse markdown frontmatter (for future use)
